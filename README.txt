@@ -9,7 +9,7 @@ This repository contains MATLAB scripts for processing and analyzing remote sens
 	Land Cover Classification (classification/): Use main1.m for segmentation, then main2.m for classification
 
 	Iceberg Area-Volume Analysis (area_volume/): Run scripts to analyze iceberg area-volume relationships
-![image](https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/blob/master/flow.png)
+![image](https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/blob/master/image/flow.png)
 
 --------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------
