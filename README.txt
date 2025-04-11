@@ -3,13 +3,14 @@
 The code used in the following study:
 “Characterizing Nearshore Icebergs in front of the Dalk Glacier, East Antarctica by UAV Observation.”
 
+![flow](https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/blob/master/image/flow.png)
+
 This repository contains MATLAB scripts for processing and analyzing remote sensing data, particularly in relation to Digital Elevation Models (DEM) and land cover classification. The project is divided into three main modules:
 	Dome Effect Processing (dome/): Run scripts to process Dome Effect in DEM data
 
 	Land Cover Classification (classification/): Use main1.m for segmentation, then main2.m for classification
 
 	Iceberg Area-Volume Analysis (area_volume/): Run scripts to analyze iceberg area-volume relationships
-![image](https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/blob/master/image/flow.png)
 
 --------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------
