@@ -66,14 +66,14 @@ main2.m: Feature selection and Random Forest classification
 	Visualizes the results: UAV data in blue, Model data in red
 -------------------------------------------------------------------------------------------------------------------------------------------
 -------------------------------------------------------------------------------------------------------------------------------------------
-	Requirements:MATLAB
+Requirements:MATLAB
 
-	Required toolboxes for image processing and machine learning
+Required toolboxes ：image processing and machine learning
 
-	Data files: DOM, DEM, roi.shp, UAV data, and model data
+Data files: DOM, DEM, roi.shp, UAV data, and model data
 
 
-Clone the repository: https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main.git
+Clone the repository: https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/tree/master
 
 License:This project is open-source under the MIT License.
 
