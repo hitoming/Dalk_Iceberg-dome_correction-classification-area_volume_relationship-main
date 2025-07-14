@@ -9,6 +9,7 @@
 % % Surface Fitting:poly22
 % % Result Visualization
 % % Save the Dome Effct tif
+%% reference: 2017-ISPRSC-Bending the Doming Effect in Structure from Motion Reconstructions through Bundle Adjustment
 % % -------------------------------------------------------------------------
 
 
