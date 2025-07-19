@@ -1,14 +1,15 @@
 %% -------------------------------------------------------------------------
 % % The process of fitting a Dome Effect of DEM data  
 % % Including data processing, surface fitting, residual analysis, and result output.
-% % Author: Nong Mingyue (Sun yat-sen University)
+% % Author: Nong Mingyue (Sun Yat-sen University)
 % % Email: nongmy@mail2.sysu.edu.cn
-% % Updated: 2025-03-20
+% % Updated: 2025-07-10
+%% Reference: 2017-ISPRSC-Bending the Doming Effect in Structure from Motion Reconstructions through Bundle Adjustment
 % % Key Steps:
 % % Datasets: data &  validate data;xls columns:longitude;latitude;dem;longitude2;latitude2;id.
 % % Surface Fitting:poly22
 % % Result Visualization
-% % Save the Dome Effct tif
+% % Save the Dome Effect tif
 % % -------------------------------------------------------------------------
 
 
