@@ -9,7 +9,7 @@
 % % Two datasets: UAV-Dalk data and model data.
 % % Logarithmic Transformation and Fitting:
 % %      Transforms area and volume data to log-log space for linear regression
-% %      Calculates the slope (b), intercept (log(a)),  R² , RMSE.
+% %      Calculates the slope (b), intercept (log10(a)),  R² , RMSE.
 % % Confidence Interval Calculation：confidence interval, 95% 
 % % Visualization:Blue:UAV data  & Red:Model data
 % % 
@@ -30,25 +30,26 @@ volume = data_cleaned.volume_all;
 
 [x1, sort_idx] = sort(area);
 y1 = volume(sort_idx);
+log10_x = log10(x1);
 log_x = log(x1);
-log_y = log(y1);
+log10_y = log10(y1);
 
 %% Logarithmic Transformation and Fitting
-p = polyfit(log_x, log_y, 1);
-y_fit = polyval(p, log_x);
+p = polyfit(log10_x, log10_y, 1);
+y_fit = polyval(p, log10_x);
 slope = p(1);
 intercept = p(2);
-R_squared = 1 - sum((log_y - polyval(p, log_x)).^2) / ...
-    sum((log_y - mean(log_y)).^2);
-RMSE = sqrt(mean((log_y - y_fit).^2));
-disp(['RMSE: ', num2str(RMSE)]);
+R_squared = 1 - sum((log10_y - polyval(p, log10_x)).^2) / ...
+    sum((log10_y - mean(log10_y)).^2);
+RMSE = sqrt(mean((log10_y - y_fit).^2));
+% disp(['RMSE: ', num2str(RMSE)]);
 
 %% Confidence Interval Calculation
 n = length(x1);
-X = [ones(n, 1), log_x]; 
-b = X \ log_y; 
+X = [ones(n, 1), log10_x]; 
+b = X \ log10_y; 
 y_pred = X * b;
-residuals = log_y - y_pred;
+residuals = log10_y - y_pred;
 sigma = sqrt(sum(residuals.^2) / (n - 2));
 alpha = 0.05;
 t_val = tinv(1 - alpha / 2, n - 2); 
@@ -56,10 +57,10 @@ C = inv(X' * X);
 conf_int = t_val * sigma * sqrt(diag(X * C * X')); 
 y_upper = y_pred + conf_int;
 y_lower = y_pred - conf_int;
-x_plot = exp(log_x);
-y_fit_plot = exp(y_pred);
-y_upper_plot = exp(y_upper);
-y_lower_plot = exp(y_lower);
+x_plot = 10.^(log10_x);
+y_fit_plot = 10.^(y_pred);
+y_upper_plot = 10.^(y_upper);
+y_lower_plot = 10.^(y_lower);
 
 %%  Visualization
 size_set = 8;
@@ -78,15 +79,16 @@ yticklabels(arrayfun(@(x) sprintf('10^{%d}', x), floor(log10(min(volume))):ceil(
 grid on;
 set(gca, 'FontName', 'Times New Roman', 'FontSize', size_set);
 text('Units', 'normalized', 'Position', [xgap_set, 0.95], ...
-    'String',  'UAV-Dalk data', ...
+    'String',  'UAV Survey', ...
     'FontSize', size_set, 'FontWeight', 'bold', 'Color', 'b');
-% text('Units', 'normalized', 'Position', [xgap_set, 0.88], ...
-%     'String', sprintf('log(V) = %.2f × log(A) + %.2f', slope, intercept), ...
-%     'FontSize', size_set, 'Color', 'b');
-a = exp(intercept);
 text('Units', 'normalized', 'Position', [xgap_set, 0.86], ...
-    'String', sprintf('V = %.2f A^{%.2f}', a, slope), ...
+    'String', sprintf('log10(V) = %.2f × log10(A) + %.2f', slope, intercept), ...
     'FontSize', size_set, 'Color', 'b');
+% 还原系数
+% % a = 10^intercept;
+% % text('Units', 'normalized', 'Position', [xgap_set, 0.86], ...
+% %     'String', sprintf('V = %.2f A^{%.2f}', a, slope), ...
+% %     'FontSize', size_set, 'Color', 'b');
 text('Units', 'normalized', 'Position', [xgap_set, 0.78], ...
     'String', sprintf('R^2 = %.2f', R_squared), ...
     'FontSize', size_set, 'Color', 'b');
@@ -101,25 +103,25 @@ area = data.Shape_Area;
 volume = data.volume_all;                                                                                                                                                             
 [x2, sort_idx] = sort(area);
 y2 = volume(sort_idx);
-log_x = log(x2);
-log_y = log(y2);
+log10_x = log10(x2);
+log10_y = log10(y2);
 
 %% Logarithmic Transformation and Fitting
-p = polyfit(log_x, log_y, 1);
-y_fit = polyval(p, log_x);
+p = polyfit(log10_x, log10_y, 1);
+y_fit = polyval(p, log10_x);
 slope = p(1);
 intercept = p(2);
-R_squared = 1 - sum((log_y - polyval(p, log_x)).^2) / ...
-    sum((log_y - mean(log_y)).^2);
-RMSE = sqrt(mean((log_y - y_fit).^2));
-disp(['RMSE: ', num2str(RMSE)]);
+R_squared = 1 - sum((log10_y - polyval(p, log10_x)).^2) / ...
+    sum((log10_y - mean(log10_y)).^2);
+RMSE = sqrt(mean((log10_y - y_fit).^2));
+% disp(['RMSE: ', num2str(RMSE)]);
 
 %% Confidence Interval Calculation
 n = length(x2);
-X = [ones(n, 1), log_x]; 
-b = X \ log_y;
+X = [ones(n, 1), log10_x]; 
+b = X \ log10_y;
 y_pred = X * b; 
-residuals = log_y - y_pred;
+residuals = log10_y - y_pred;
 sigma = sqrt(sum(residuals.^2) / (n - 2)); 
 alpha = 0.05;
 t_val = tinv(1 - alpha / 2, n - 2);
@@ -127,10 +129,10 @@ C = inv(X' * X);
 conf_int = t_val * sigma * sqrt(diag(X * C * X')); 
 y_upper = y_pred + conf_int;
 y_lower = y_pred - conf_int;
-x_plot = exp(log_x);
-y_fit_plot = exp(y_pred);
-y_upper_plot = exp(y_upper);
-y_lower_plot = exp(y_lower);
+x_plot = 10.^(log10_x);
+y_fit_plot = 10.^(y_pred);
+y_upper_plot = 10.^(y_upper);
+y_lower_plot = 10.^(y_lower);
 
 %%  Visualization
 fill([x_plot; flipud(x_plot)], [y_upper_plot; flipud(y_lower_plot)], [0.4 0.4 0.4], 'EdgeColor', 'none', 'FaceAlpha', 0.5); % 置信区间
@@ -154,15 +156,16 @@ ylabel('Volume (m^3)', 'Interpreter', 'tex','FontWeight', 'bold');
 grid on;
 set(gca, 'FontSize', size_set);
 text('Units', 'normalized', 'Position', [xgap_set, 0.68], ...
-    'String',  'Model data', ...
+    'String',  'Ocean Model', ...
     'FontSize', size_set, 'FontWeight', 'bold','Color', 'r');
-% text('Units', 'normalized', 'Position', [xgap_set, 0.63], ...
-%     'String', sprintf('log(V) = %.2f × log(A) + %.2f', slope, intercept), ...
-%     'FontSize', size_set, 'Color', 'r');
-a = exp(intercept); 
 text('Units', 'normalized', 'Position', [xgap_set, 0.59], ...
-    'String', sprintf('V = %.2f A^{%.2f}', a, slope), ...
+    'String', sprintf('log10(V) = %.2f × log10(A) + %.2f', slope, intercept), ...
     'FontSize', size_set, 'Color', 'r');
+% 还原系数
+% % a = 10^intercept;
+% % text('Units', 'normalized', 'Position', [xgap_set, 0.59], ...
+% %     'String', sprintf('V = %.2f A^{%.2f}', a, slope), ...
+% %     'FontSize', size_set, 'Color', 'r');
 text('Units', 'normalized', 'Position', [xgap_set, 0.51], ...
     'String', sprintf('R^2 = %.2f', R_squared), ...
     'FontSize', size_set, 'Color', 'r');
@@ -183,6 +186,6 @@ axis tight;
 set(gca,'FontName', 'Times New Roman', 'LooseInset', [0, 0, 0, 0]); 
 save_folder = pwd; 
 % % manually adjust the figure before saving it
-save_filename = fullfile(save_folder, 'fig.png');
-print(fig, save_filename, '-dpng', sprintf('-r%d', dpi));
+% save_filename = fullfile(save_folder, 'fig.png');
+% print(fig, save_filename, '-dpng', sprintf('-r%d', dpi));
 
