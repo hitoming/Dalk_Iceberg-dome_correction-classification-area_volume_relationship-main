@@ -28,29 +28,8 @@ Folder Structure and Code Descriptions
 
 	Output of results
 ------------------------------------------------------------------------------------------
-2. Land Cover Classification (classification/)
-
-	This module provides MATLAB scripts for land cover classification using superpixel segmentation and machine learning.
-
-Main Scripts:
-
-	main1.m: Superpixel segmentation and feature extraction
-
-	Data : Performs superpixel segmentation to reduce computational complexity
-
-	Visualizes the boundaries of segmentation results
-
-main2.m: Feature selection and Random Forest classification
-
-	Selects and normalizes key features from RGB and DEM data
-
-	Trains a Random Forest model for classification
-
-	Predicts land cover classes and maps them back to the segmentation results
-
-	Saves classification results
 ------------------------------------------------------------------------------------------
-3. Iceberg Area-Volume Analysis (area_volume/)
+2. Iceberg Area-Volume Analysis (area_volume/)
 
 	This module examines the relationship between iceberg area and volume using log-log coordinate transformations.
 
@@ -71,7 +50,7 @@ main2.m: Feature selection and Random Forest classification
 
 	Data files: DOM, DEM, roi.shp, UAV data, and model data
 
-
+The boundary and geometric data of icebergs are provided. Due to the large data volume, 10m resolution DEM and DOM data are provided for reference. Please contact us via email if you need higher resolution data.
 Clone the repository: https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main.git
 
 License:This project is open-source under the MIT License.
