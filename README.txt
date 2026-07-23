@@ -11,6 +11,7 @@ This repository contains MATLAB scripts for processing and analyzing remote sens
 	Iceberg Area-Volume Analysis (area_volume/): Run scripts to analyze iceberg area-volume relationships
 ![image](https://github.com/hitoming/Dalk_Iceberg-dome_correction-classification-area_volume_relationship-main/blob/main/image/flow.png)
 
+Due to file size constraints, the 0.5 m resolution Digital Elevation Model (DEM) and Digital Orthophoto Map (DOM) are available at  https://doi.org/10.5281/zenodo.21413122
 --------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------
 
